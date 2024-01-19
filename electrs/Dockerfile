@@ -8,12 +8,14 @@ WORKDIR /build
 RUN apt-get update
 RUN apt-get install -y git cargo clang cmake libsnappy-dev
 
+# libc-bin=2.36-9+deb12u3
+
 RUN git clone --branch $VERSION $REPO .
 
 RUN cargo build --release --bin electrs
 
 
-FROM debian:buster-slim
+FROM debian:bookworm-slim
 
 COPY --from=builder /build/target/release/electrs /bin/electrs
 

@@ -7,4 +7,4 @@ docker build .
 docker tag 9738e2425919 amd64/electrs:v0.1
 docker image ls
 ```
-
+This image is based off Debian "Bookworm" docker image
