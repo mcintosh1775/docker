@@ -1,0 +1,24 @@
+version: "3.7"
+
+services:
+
+  bitcoin-core:
+    image: amd64/bitcoind:26.0
+    command:
+      -printtoconsole
+    environment:
+      - BITCOIN_DATA=/opt/bitcoin-core
+    volumes:
+      - bitcoin-core:/opt/bitcoin-core
+
+volumes:
+  bitcoin-core:
+    name: bitcoin-core
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /opt/docker/bitcoin-core
+
+networks:
+ bitcoind:
